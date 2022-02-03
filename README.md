@@ -13,5 +13,8 @@ Area of improvement
 
 2. There are some hardcoded strings that can be taken to constants file
 
+3. AstroBaseActivity can be used for many other common things to introduce, and that will help child
+   classes get it and do their work directly, that will remove more boilerplate code.
+
 3. Retrofit and db can be initialized in a different file and then can be provided from there,
 since in bigger project we need different config of retrofit, that can be customised in the different file.
