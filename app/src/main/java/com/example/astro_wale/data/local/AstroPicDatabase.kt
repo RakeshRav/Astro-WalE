@@ -1,10 +1,11 @@
-package com.example.latesttesting1.data.local
+package com.example.astro_wale.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.astro_wale.data.common.AstroPicData
 
-@Database(entities = [ShoppingItem::class], version = 1)
-abstract class ShoppingDatabase : RoomDatabase() {
+@Database(entities = [AstroPicData::class], version = 1)
+abstract class AstroPicDatabase : RoomDatabase() {
 
-    abstract fun getShoppingDao(): ShoppingDao
+    abstract fun getAstroPicDao(): AstroPicDao
 }

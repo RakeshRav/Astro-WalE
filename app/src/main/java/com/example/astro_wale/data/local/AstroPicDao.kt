@@ -1,20 +1,17 @@
-package com.example.latesttesting1.data.local
+package com.example.astro_wale.data.local
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.example.astro_wale.data.common.AstroPicData
 
 @Dao
-interface ShoppingDao {
+interface AstroPicDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertShoppingItem(shoppingItem: ShoppingItem)
+    suspend fun insertAstroPicData(astroPicData: AstroPicData)
 
-    @Delete
-    suspend fun deleteShoppingItem(shoppingItem: ShoppingItem)
-
-    @Query("SELECT * FROM SHOPPING_ITEMS")
-    fun observeAllShoppingItems(): LiveData<List<ShoppingItem>>
-
-    @Query("SELECT SUM(price * qty) FROM SHOPPING_ITEMS")
-    fun observeTotalPrice(): LiveData<Float>
+    @Query("SELECT * FROM ASTRO_PICTURE_DATA WHERE id=:id")
+    fun getAstroApiData(id: Int): AstroPicData
 }

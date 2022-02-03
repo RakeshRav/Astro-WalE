@@ -1,4 +1,6 @@
 package com.example.astro_wale.data.local
 
-class DBConstants {
+object DBConstants {
+
+    const val DATABASE_NAME = "astro_db"
 }

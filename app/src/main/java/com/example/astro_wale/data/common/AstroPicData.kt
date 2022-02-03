@@ -7,9 +7,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "shopping_items")
+@Entity(tableName = "astro_picture_data")
 @Parcelize
-data class AstroApiData(
+data class AstroPicData(
     @SerializedName("explanation")
     val explanation: String?,
     @SerializedName("title")
