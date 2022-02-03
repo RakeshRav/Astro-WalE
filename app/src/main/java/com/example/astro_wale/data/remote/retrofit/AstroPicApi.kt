@@ -9,6 +9,6 @@ interface AstroPicApi {
 
     @GET(ApiConstants.END_POINT_ASTRO_API)
     fun getPictureOfTheDay(
-        @Query(ApiConstants.QUERY_API_KEY) apiKey: String,
+        @Query(ApiConstants.QUERY_API_KEY) apiKey: String = ApiConstants.API_KEY,
     ): Response<AstroPicData>
 }
