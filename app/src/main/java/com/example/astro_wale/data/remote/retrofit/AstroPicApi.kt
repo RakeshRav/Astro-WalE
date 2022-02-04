@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface AstroPicApi {
 
     @GET(ApiConstants.END_POINT_ASTRO_API)
-    fun getPictureOfTheDay(
+    suspend fun getPictureOfTheDay(
         @Query(ApiConstants.QUERY_API_KEY) apiKey: String = ApiConstants.API_KEY,
     ): Response<AstroPicData>
 }

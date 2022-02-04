@@ -1,4 +1,4 @@
-package com.example.astro_wale.ui
+package com.example.astro_wale.ui.pic_of_day
 
 import androidx.appcompat.app.AppCompatActivity
 

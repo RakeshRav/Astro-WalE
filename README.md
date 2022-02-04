@@ -16,5 +16,8 @@ Area of improvement
 3. AstroBaseActivity can be used for many other common things to introduce, and that will help child
    classes get it and do their work directly, that will remove more boilerplate code.
 
-3. Retrofit and db can be initialized in a different file and then can be provided from there,
-since in bigger project we need different config of retrofit, that can be customised in the different file.
+4. there can be live data that can emit multiple values -> loading, success, failure. right now added cases for success and failure
+
+5. Subtitle can be shorten to 3-4 lines, and we can give read more option to user
+
+6. Hardcode colors can be taken to colors style
