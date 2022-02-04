@@ -9,6 +9,7 @@ import com.example.astro_wale.data.remote.retrofit.ApiConstants
 import com.example.astro_wale.data.remote.retrofit.AstroPicApi
 import com.example.astro_wale.domain.repositories.AppRepository
 import com.example.astro_wale.domain.repositories.AstroPicRepository
+import com.example.astro_wale.others.ConnectionUtils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,7 +58,16 @@ class AppModule {
     fun providesAstroAppRepository(
         dao: AstroPicDao,
         astroPicApi: AstroPicApi,
+        connectionUtils: ConnectionUtils
     ): AstroPicRepository {
-        return AppRepository(dao, astroPicApi)
+        return AppRepository(dao, astroPicApi, connectionUtils)
+    }
+
+    @Provides
+    @Singleton
+    fun provideConnectionUtils(
+        @ApplicationContext context: Context,
+    ): ConnectionUtils {
+        return ConnectionUtils(context)
     }
 }

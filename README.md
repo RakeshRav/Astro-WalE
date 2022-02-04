@@ -21,3 +21,6 @@ Area of improvement
 5. Subtitle can be shorten to 3-4 lines, and we can give read more option to user
 
 6. Hardcode colors can be taken to colors style
+
+7. We can handle error with another cases when internet is not available, right now handled error as the last data we receive
+from data layer is older and current date data is not available

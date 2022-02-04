@@ -13,5 +13,5 @@ interface AstroPicDao {
     suspend fun insertAstroPicData(astroPicData: AstroPicData)
 
     @Query("SELECT * FROM ASTRO_PICTURE_DATA WHERE id=:id")
-    fun getAstroApiData(id: Int): AstroPicData
+    suspend fun getAstroApiData(id: Int): AstroPicData
 }

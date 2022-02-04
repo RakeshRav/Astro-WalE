@@ -17,5 +17,6 @@ data class AstroPicData(
     @SerializedName("url")
     val url: String?,
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null
+    var id: Int? = null,
+    var timestamp: Long? = null
 ) : Parcelable

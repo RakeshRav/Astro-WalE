@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.astro_wale.data.common.AstroPicData
 import com.example.astro_wale.domain.repositories.AstroPicRepository
+import com.example.astro_wale.others.Constants
+import com.example.astro_wale.others.DateUtils
 import com.example.astro_wale.others.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AstroPicViewModel @Inject constructor(
-    private val repository: AstroPicRepository
-): ViewModel() {
+    private val repository: AstroPicRepository,
+) : ViewModel() {
 
     private val picUrl = ObservableField<String>()
     private val title = ObservableField<String>()
@@ -30,7 +32,7 @@ class AstroPicViewModel @Inject constructor(
 
     fun fetchPicOfTheDay() = viewModelScope.launch {
         val astroPicData = repository.getPicOfTheDay()
-        when(astroPicData.status){
+        when (astroPicData.status) {
             Status.SUCCESS -> processAstroPicData(astroPicData.data)
             Status.ERROR -> processError(astroPicData.message)
         }
@@ -41,6 +43,24 @@ class AstroPicViewModel @Inject constructor(
             title.set(data.title)
             subtitle.set(data.explanation)
             picUrl.set(data.url)
+            insertDataIntoDb(it)
+        }
+    }
+
+    private fun insertDataIntoDb(data: AstroPicData) {
+        viewModelScope.launch {
+            repository.insertAstroPicData(astroPicData = data.apply {
+                id = Constants.ENTRY_ID
+                if (timestamp == null) timestamp = System.currentTimeMillis()
+            })
+            checkForDateError(data)
+        }
+    }
+
+    private fun checkForDateError(data: AstroPicData) {
+        data.timestamp?.let { time ->
+            if (DateUtils.isPrevDate(time))
+                processError("We are not connected to the network, showing you the last image we have")
         }
     }
 
