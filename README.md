@@ -24,3 +24,7 @@ Area of improvement
 
 7. We can handle error with another cases when internet is not available, right now handled error as the last data we receive
 from data layer is older and current date data is not available
+
+8. isPrevDate can be used in try catch since there is chance of passing incorrect input
+
+9. Test cases can be written for util classes, repositories, db classes. a sample test case is written for date util
